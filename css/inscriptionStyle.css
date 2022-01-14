@@ -35,7 +35,7 @@
   }
 
   
-  div input,.connexion button , .dmnd button {
+  div input,.inscription button , .dmnd button , .connexion button {
     height: 41.5px;
     width: 100%;
     outline: none;
@@ -53,14 +53,14 @@
     border-color:#FF8500;
   }
   
-  .connexion button{
+  .inscription button{
     color: #fff;
     letter-spacing: 1px;
     border: none;
     background: #FF8500;
     cursor: pointer;
   }
-  .connexion button:hover{
+  .inscription button:hover{
     background: #ff921e;
   }
 
@@ -95,9 +95,7 @@
     width: 100%;
     height: max-content;
   }
-  #wilayaq{
-    height: max-content;
-  }
+  
   /* image style  */
 /* wilayas style  */
 
@@ -116,7 +114,7 @@ div.dmnd{
   display: none;
 }
 
-div.dmnd button{
+div.dmnd button , .connexion button{
   color: #fff;
     letter-spacing: 1px;
     border: none;
@@ -124,8 +122,11 @@ div.dmnd button{
     cursor: pointer;
     background-color: #3a0ca3
 }
-div.dmnd button:hover{
+div.dmnd button:hover , .connexion button:hover{
   background-color: #4c20b4;
+}
+.connexion {
+text-align: center;
 }
 
 

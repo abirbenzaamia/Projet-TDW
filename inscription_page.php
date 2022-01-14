@@ -9,13 +9,13 @@ require_once('dbConn.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="inscriptionStyle.css">
+    <link rel="stylesheet" href="css/inscriptionStyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    
-    <link rel="stylesheet" href="filter_multi_select.css" />
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="jquery-3.6.0.js"></script>
-    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/filter_multi_select.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
     <title>Inscription</title>
 </head>
 <body>
@@ -23,7 +23,7 @@ require_once('dbConn.php');
 <div>
  
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"  crossorigin="anonymous"></script>
     <div class="logo">
      <img src="assets/logo.svg" alt="logo">
     </div>
@@ -49,7 +49,8 @@ require_once('dbConn.php');
        
           <div class="wrapper">
             <h2>S'inscrire</h2>
-            <form method="POST" action="inscription_process.php">
+            <span id="exdj"></span>
+            <form method="POST" action="inscription_page.php">
               <div class="nom">
                 <input type="text" placeholder="Nom" name="nom" required>
               </div>
@@ -74,23 +75,24 @@ require_once('dbConn.php');
               </div>
                 <div class="transp">
                   <label for="wilayas">Choisissez les wilyas que vous voulez desservir</label>
-                   <div class="wilayas">
+                   <div class="wilayas_dep">
+                     <label for="wilayas_dep">Wilayas de départ</label>
                      <select multiple name="wilayas" id="wilayas" class="filter-multi-select">
-                     <?php
-
-include "dbConn.php"; 
-
-$records = mysqli_query($db,"select * from wilayas "); // la requete sql pour récupérer la liste des wilayas de la bdd
-
-while($data = mysqli_fetch_array($records))
-{
-?>
-<option value="<?php echo $data['nom']; ?>"><?php echo $data['code']; echo "-"; echo $data['nom']; ?></option>	
 <?php
-}
+include("afficher_wilayas.php");
+?>
+                     </select>
+                     <br>
+                   </div>
+                   <div class="wilayas_arv">
+                     <label for="wilayas_arv">Wilayas d'arrivé</label>
+                     <select multiple name="wilayas" id="wilayas" class="filter-multi-select">
+<?php
+include("afficher_wilayas.php");
 ?>
                      </select>
                    </div>
+
                    <div class="cert">
                    <input type="checkbox" placeholder="checkbox" name="cocher"> 
                 <p>Voulez-vous être un transporteur certifié ?</p>
@@ -100,14 +102,20 @@ while($data = mysqli_fetch_array($records))
                    </div>
                 </div>
               
-              <div class="connexion">
+              <div class="inscription">
                 <button type="submit" name="inscription_btn">S'inscrire</button>
               </div>
-             
+             <div class="connexion">
+               <span> Ou </span>
+               <br>
+               <br>
+               <button  name="connexion_btn">Se Connecter</button>
+
+             </div>
             </form>
           </div>  
-          <script src="scriptInscription.js"></script>
-          <script src="filter-multi-select-bundle.min.js"></script>
+          <script src="js/scriptInscription.js"></script>
+          <script src="js/filter-multi-select-bundle.min.js"></script>
           <div>
   </div>
 </body>
