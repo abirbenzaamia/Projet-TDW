@@ -86,7 +86,7 @@ include("afficher_wilayas.php");
                    </div>
                    <div class="wilayas_arv">
                      <label for="wilayas_arv">Wilayas d'arrivé</label>
-                     <select multiple name="wilayas" id="wilayas" class="filter-multi-select">
+                     <select multiple name="wilayas_arv" id="wilayas_arv" class="filter-multi-select">
 <?php
 include("afficher_wilayas.php");
 ?>

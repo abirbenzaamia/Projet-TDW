@@ -17,7 +17,7 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
  *  USA
  */
-:root {
+:root {.filter-multi-select > .dropdown-menu > .filter > button
     --fms-badge-text-color: white;
     --fms-badge-color: var(--primary)
 }
@@ -130,8 +130,8 @@
     background-color: transparent;
     font-weight: 900;
     color: #ccc;
-    right: 2rem;
-    top: 1rem;
+    right: 4rem;
+    top: 1.6rem;
 }
 
 .filter-multi-select > .dropdown-menu > .filter > button:hover {

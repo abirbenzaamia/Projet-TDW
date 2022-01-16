@@ -370,7 +370,7 @@ nav.navBar li a::before{
   }
   
   /* Set a style for all buttons */
-  button {
+  .animate button {
     background-color: #04AA6D;
     color: white;
     padding: 14px 20px;
@@ -380,7 +380,7 @@ nav.navBar li a::before{
     width: 100%;
   }
   
-  button:hover {
+  .animate button:hover {
     opacity: 0.8;
   }
   
@@ -403,7 +403,7 @@ nav.navBar li a::before{
     border-radius: 50%;
   }
   
-  .container {
+  .animate .container {
     padding: 16px;
   }
   

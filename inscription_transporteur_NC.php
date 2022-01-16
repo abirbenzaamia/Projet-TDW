@@ -20,7 +20,8 @@ function inscrireTransporteurNC(){
     $tel = $_POST['tel'];
     $adr = $_POST['adr'];
     $mdp = md5($_POST['mdp']); //chiffrer le mot de passe
-    $trajet = $_POST['trajet'];
+    $wilayas_dep = $_POST['wilayas_dep'];
+    $wilayas_arv = $_POST['wilayas_arv'];
 
     //verifier si l'utilisateur existe déja 
     $user_check_query = "SELECT * FROM `utilisateurs` WHERE email ='".$email."' OR tel ='".$tel."' limit 1 ;";
@@ -53,18 +54,25 @@ function inscrireTransporteurNC(){
   }
   $sql3= "INSERT INTO `transporteursNC` (`id`) VALUES ('".$id."')";
   $result3 = $db->query($sql3);
-  for ($i=0; $i < sizeof($trajet); $i++) { 
-      $sql4 = "INSERT INTO `trajet` (`idT`,`idW`) VALUES ('".$id."','".$trajet[$i]."')";
-      $result4 = $db->query($sql4);
-  }
+  for ($i=0; $i < sizeof($wilayas_dep); $i++) { 
+    $sql4 = "INSERT INTO `wilaya_dep` (`idT`,`idW`) VALUES ('".$id."','".$wilayas_dep[$i]."')";
+    $result4 = $db->query($sql4);
+}
+for ($i=0; $i < sizeof($wilayas_arv); $i++) { 
+  $sql5 = "INSERT INTO `wilaya_arv` (`idT`,`idW`) VALUES ('".$id."','".$wilayas_arv[$i]."')";
+  $result5 = $db->query($sql5);
+  echo $db->error;
+}
   
-  if ($result1 ===FALSE || $result2 ===FALSE || $result3 ===FALSE || $result4 ===FALSE  )  {
+  if ($result1 ===FALSE || $result2 ===FALSE || $result3 ===FALSE || $result4 ===FALSE || $result5 ===FALSE )  {
+
       echo 'inscription échouée';
+
   }else{
+    $_SESSION['id'] = $id;
       echo 'inscription avec succes';
   }
     }
     
-   
 }
 ?>

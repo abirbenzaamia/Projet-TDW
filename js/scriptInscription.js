@@ -2,7 +2,7 @@ $(document).ready(function(){
     //recupere la listes des wilayas du fichier json
  
   
-
+  
   $(".cocher input").change(function(){
     var checked = $(this).is(':checked'); // Checkbox state
 
@@ -21,7 +21,7 @@ $(document).ready(function(){
 
   
   if(checked){//afficher les autres zones y compris les wilayas si c'est un transporteur
-     
+
       $('.dmnd').show();
   }else{
     //cacher la zone affcihéé si ce n'est un transporteur
@@ -29,7 +29,7 @@ $(document).ready(function(){
   }
 
 });
-$('.connexion button').click(function(e){
+$('.inscription button').click(function(e){
 
   let valid = this.form.checkValidity(); 
   if (valid) {
@@ -61,20 +61,31 @@ $('.connexion button').click(function(e){
       });
 
     }else{ 
+
       //s'il s'agit d'un transporteur 
-      let values = $('.selected-items>span').text();
-      var wilayas = values.split('×');
-     for (let i = 0; i < wilayas.length; i++) {
-       let index = wilayas[i].indexOf("-"); 
-       wilayas[i]= wilayas[i].slice(0,index); 
+      let values_dep = $('.wilayas_dep .selected-items>span').text();
+      var wilayas_dep = values_dep.split('×');
+     for (let i = 0; i < wilayas_dep.length; i++) {
+       let index = wilayas_dep[i].indexOf("-"); 
+       wilayas_dep[i]= wilayas_dep[i].slice(0,index); 
      }
-     wilayas.pop();
+     wilayas_dep.pop();
+     let values_arv = $('.wilayas_arv .selected-items>span').text();
+      var wilayas_arv = values_arv.split('×');
+     for (let i = 0; i < wilayas_arv.length; i++) {
+       let index = wilayas_arv[i].indexOf("-"); 
+       wilayas_arv[i]= wilayas_arv[i].slice(0,index); 
+     }
+     wilayas_arv.pop(); 
+     console.log(wilayas_dep);
+     console.log(wilayas_arv);
+
      let checkedC = $('.cert input').is(':checked'); 
      if (checkedC===false) { //il ne s'agit pas d'un transporteur certifié
       $.ajax({
         type: 'POST',
         url: 'inscription_transporteur_NC.php',
-        data: {nom: nom ,prenom: prenom, email:email,tel:numero,adr:adr,mdp:mdp,trajet:wilayas },
+        data: {nom: nom ,prenom: prenom, email:email,tel:numero,adr:adr,mdp:mdp,wilayas_dep:wilayas_dep, wilayas_arv: wilayas_arv },
         success: function(data){
           //data will contain the vote count echoed by the controller i.e.  
          //then append the result where ever you want like

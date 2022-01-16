@@ -63,7 +63,7 @@ include("profil_element.php");
      </form>
      <div class="ajout_annonce">
      <a href="#"> Ajouter une annonce </a>
-     <form action="accueil.php" method="POST" >
+     <form  method="POST" >
        <label for="wilaya_dep">Wilaya de départ</label>
        <select name="wilaya_dep" id="dep">
          <?php
@@ -135,8 +135,9 @@ while($data = mysqli_fetch_array($records))
          
        </select>
        <br>
-       <button>Envoyer la demande de l'annonce</button>
+       <button type="submit" >Envoyer la demande de l'annonce</button>
      </form>
+     <span id="pub"></span>
      </div>
     <div class="annonces"> 
       <div class="ligne1">

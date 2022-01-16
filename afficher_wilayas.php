@@ -7,7 +7,7 @@ $records = mysqli_query($db,"select * from wilayas "); // la requete sql pour rÃ
 while($data = mysqli_fetch_array($records))
 {
 ?>
-<option value="<?php echo $data['nom']; ?>">
+<option value="<?php echo $data['id']; ?>">
 <?php echo $data['code'];echo "-"; echo $data['nom']; ?>
 </option>	
 <?php
