@@ -1,6 +1,5 @@
 <?php
- require_once("../Controller/AnnonceController.class.php");
-    $annonceCtrl = new AnnonceController();
-    $results= $annonceCtrl->getAnnonceValide();
-    echo $results;
+   require_once("View/AnnonceView.php");
+   $annonceView = new AnnonceView();
+   $annonceView->getAnnonces();
 ?>

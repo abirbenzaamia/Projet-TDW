@@ -3,8 +3,8 @@
   require_once("Model/AnnonceModel.class.php");
   class AnnonceController{
     function getAnnonceValide(){
-       $annonceMdl = new AnnonceModel();
-       $res = $annonceMdl->getAnnonceValide();
+       $get = new AnnonceModel();
+       $res = $get->getAnnonceValide();
        return $res;
     }   
 

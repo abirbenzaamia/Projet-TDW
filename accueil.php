@@ -17,10 +17,10 @@
    
     <?php 
 
-include("profil_element.php");
+include("Routes/UtilisateurRoute.php");
  
     ?>
-
+  
     <div class="diaporama">
       <div class="container">
           <a href="#">
@@ -45,10 +45,10 @@ include("profil_element.php");
     </div>
         <nav class="navBar">
             <ul class="menuItems">
-              <li><a href='#' data-item='Accueil'>Accueil</a></li>
-              <li><a href='#' data-item='Présentation'>Présentation</a></li>
+              <li><a href='accueil.php' data-item='Accueil'>Accueil</a></li>
+              <li><a href='presentation.php' data-item='Présentation'>Présentation</a></li>
               <li><a href='#' data-item='News'>News</a></li>
-              <li><a href='#' data-item='Inscription'>Inscription</a></li>
+              <li><a href='inscription_page.php' data-item='Inscription'>Inscription</a></li>
               <li><a href='#' data-item='Statistiques'>Statistiques</a></li>
               <li><a href='#' data-item='Contact'>Contact</a></li>
             </ul>
@@ -61,27 +61,30 @@ include("profil_element.php");
          <input type="text" name="depart" placeholder="Arriver">
          <a href="#"> Rechercher</a>
      </form>
-     <div class="ajout_annonce">
+   <?php
+
+if (isset($_SESSION['id'])) {
+
+  echo ' <div class="ajout_annonce">
      <a href="#"> Ajouter une annonce </a>
      <form  method="POST" >
        <label for="wilaya_dep">Wilaya de départ</label>
-       <select name="wilaya_dep" id="dep">
-         <?php
+       <select name="wilaya_dep" id="dep">';
+         
          include("afficher_wilayas.php");
-         ?>
-       </select>
-       <br>
-       <label for="wilaya_arv">Wilaya d'arriver</label>
-       <select name="wilaya_arv" id="arv">
-         <?php
-         include("afficher_wilayas.php");
-         ?>
-       </select>
-       <br>
-       <label for="type_transp">Type de transport</label>
-       <select name="type_transp" id="type_transp">
-         <!-- récuperer les type de transport de la base de bonnées -->
-       <?php
+         
+      echo '</select>
+      <br>
+      <label for="wilaya_arv">Wilaya d arriver</label>
+      <select name="wilaya_arv" id="arv">';
+        
+        include("afficher_wilayas.php");
+        
+      echo '</select>
+      <br>
+      <label for="type_transp">Type de transport</label>
+      <select name="type_transp" id="type_transp">' ;
+        //  <!-- récuperer les type de transport de la base de bonnées -->
 
 include "dbConn.php"; 
 
@@ -89,18 +92,18 @@ $records = mysqli_query($db,"select * from type_transport "); // la requete sql 
 
 while($data = mysqli_fetch_array($records))
 {
-?>
-<option value="<?php echo $data['type']; ?>">
-<?php echo $data['type']; ?>
-</option>	
-<?php
+echo '<option value="'.$data["type"].'">
+'.$data["type"].'
+</option>	';
+
+
 }
-?>
-       </select>
-       <br>
-       <label for="poids">Poids</label>
-       <select name="poids" id="poids">
-       <?php
+
+  echo '  </select>
+  <br>
+  <label for="poids">Poids</label>
+  <select name="poids" id="poids">';
+
 
 include "dbConn.php"; 
 
@@ -108,66 +111,52 @@ $records = mysqli_query($db,"select * from poids "); // la requete sql pour réc
 
 while($data = mysqli_fetch_array($records))
 {
-?>
-<option value="<?php echo $data['id']; ?>">
-<?php echo $data['borneInf']; echo $data['uniteInf'];echo " < x < " ; echo $data['borneSup'];echo $data['uniteSup'];?>
-</option>	
-<?php
+echo '<option value="'.$data["id"].' ">
+ '.$data["borneInf"].' '.$data["uniteInf"] .' < x < '  .$data["borneSup"].''. $data["uniteSup"].'
+</option>	';
+
+
 }
-?>
-       </select>
-       <br>
-       <label for="volume">Taille de colis</label>
-       <select name="volume" id="volume">
-         <option value="petit">Petit</option>
-         <option value="moyen">Moyen</option>
-         <option value="grand">Grand</option>
-       </select>
-       <br>
-       <label for="moy_transp">Moyen de transport</label>
-       <select name="moy_transp" id="moy_transp">
-         <option value="avion">Avion</option>
-         <option value="voiture">Voiture</option>
-         <option value="camion">Camion/camionette</option>
-         <option value="train">Train</option>
-         <option value="bus">Bus</option>
-         <option value="bateau">Bâteau</option>
-         
-       </select>
-       <br>
-       <button type="submit" >Envoyer la demande de l'annonce</button>
-     </form>
-     <span id="pub"></span>
-     </div>
+
+  echo ' </select>
+  <br>
+  <label for="volume">Taille de colis</label>
+  <select name="volume" id="volume">
+    <option value="petit">Petit</option>
+    <option value="moyen">Moyen</option>
+    <option value="grand">Grand</option>
+  </select>
+  <br>
+  <label for="moy_transp">Moyen de transport</label>
+  <select name="moy_transp" id="moy_transp">
+    <option value="avion">Avion</option>
+    <option value="voiture">Voiture</option>
+    <option value="camion">Camion/camionette</option>
+    <option value="train">Train</option>
+    <option value="bus">Bus</option>
+    <option value="bateau">Bâteau</option>
+    
+  </select>
+  <br>
+  <button type="submit" >Envoyer la demande de l annonce</button>
+</form>
+<span id="pub"></span>
+</div>';
+  
+
+}
+   
+   ?>
     <div class="annonces"> 
       <div class="ligne1">
-  
-              <?php
+     <?php 
 
-include("Model/DataBaseModel.class.php");
-$dbModel= new DataBaseModel();
-$db = $dbModel->connectDB();
-       $results = array();
-       $sql= " SELECT * FROM annonce_valide limit 8";
-       $result = $db->query($sql);
-
-       if (mysqli_num_rows($result) > 0) {
-           // output data of each row
-           while($row = mysqli_fetch_assoc($result)) {
-               $id = $row['id'];
-             $query = " SELECT * FROM `annonce_utilisateur` WHERE id = '".$id."'";
-             $res = $db->query($query);
-             array_push($results, $res);
-           }
-         }
-         echo $results;
-         echo $db->error;
+     include("Routes/AnnonceRoute.php");
       
+         ?>
+     
 
-  
-   
-?>
-  
+
       </div>
       <div class="ligne2">
 
