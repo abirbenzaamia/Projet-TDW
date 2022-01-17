@@ -141,31 +141,33 @@ while($data = mysqli_fetch_array($records))
      </div>
     <div class="annonces"> 
       <div class="ligne1">
-        <div class="card">
-            <div class="card-header">
-              <img src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="rover" />
-            </div>
-            <div class="card-body">
-              <h4>
-                Why is the Tesla Cybertruck designed the way it
-                is?
-              </h4>
-              <p>
-                An exploration into the truck's polarising design
-              </p> 
-              <div class="link">
-                <a href="#">
-                    <span class="link-text">
-                        Lire la suite
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-                          </svg>
-                      </span>
-                </a>  
-              </div>
-                   
-            </div>
-          </div>
+  
+              <?php
+
+include("Model/DataBaseModel.class.php");
+$dbModel= new DataBaseModel();
+$db = $dbModel->connectDB();
+       $results = array();
+       $sql= " SELECT * FROM annonce_valide limit 8";
+       $result = $db->query($sql);
+
+       if (mysqli_num_rows($result) > 0) {
+           // output data of each row
+           while($row = mysqli_fetch_assoc($result)) {
+               $id = $row['id'];
+             $query = " SELECT * FROM `annonce_utilisateur` WHERE id = '".$id."'";
+             $res = $db->query($query);
+             array_push($results, $res);
+           }
+         }
+         echo $results;
+         echo $db->error;
+      
+
+  
+   
+?>
+  
       </div>
       <div class="ligne2">
 

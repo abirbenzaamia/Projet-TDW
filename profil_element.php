@@ -12,7 +12,7 @@ session_start();
        <!-- user profile -->
        <div class='profile'>
          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP7siAoPLYzYNr7HMR6jHtzUbyqrp2iDhjyA&usqp=CAU' />
-         <a href='#' class='name'>".$user_info['prenom']." " .$user_info['nom']."</a>
+         <a href='View/ProfilUtilisateurView.class.php' class='name'>".$user_info['prenom']." " .$user_info['nom']."</a>
          <!-- more menu -->
          <ul class='menu'>
            <li><a href='#'>Modifier mon profil</a></li>
