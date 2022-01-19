@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>  
 <html lang="en">
 <head>
@@ -8,9 +11,18 @@
     <title>Se connecter</title>
 </head>
 <body>
+
     <div class="wrapper">
         <h2>Se connecter</h2>
-        <form method="post" action="connection.php">
+        <form method="post" action="AdminAuthentification.php">
+        <?php
+include_once("View/AdminView.class.php");
+$adminView = new AdminView();
+
+if (isset($_POST["login_btn"])) {
+  $adminView->AdminConn($_POST["username"],$_POST["password"]);
+}
+?>
           <div class="utilisateur">
             <input type="text" placeholder="nom d'utilisateur" name="username" required>
           </div>
@@ -20,13 +32,11 @@
           </div>
         
           <div class="connexion">
-            <button type="submit" name="login_button">Se connecter</button>
+            <button type="submit" name="login_btn">Se connecter</button>
           </div>
          
         </form>
       </div>  
-<script>
 
-</script>
 </body>
 </html>

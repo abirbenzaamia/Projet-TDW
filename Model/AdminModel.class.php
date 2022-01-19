@@ -7,7 +7,7 @@ class AdminModel{
     {
         $dbModel= new DataBaseModel();
         $db = $dbModel->connectDB();
-               $sql= " SELECT * FROM `admins` WHERE nom = ".$nom." AND mdp = ".$mdp."";
+               $sql= " SELECT * FROM `admins` WHERE nom = '".$nom."' AND mdp = '".$mdp."'";
                $result = $db->query($sql);    
                if (mysqli_num_rows($result) > 0) {
                 // output data of each row
