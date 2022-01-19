@@ -19,9 +19,7 @@ require_once("Model/DataBaseModel.class.php");
                        $res = $db->query($query);
                        while($row1 = mysqli_fetch_assoc($res)) {
                          array_push($results, $row1);
-                       }
-         
-                       
+                       }                      
                      }
                    }
           return $results;
