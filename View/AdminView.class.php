@@ -16,7 +16,7 @@ class AdminView{
 }
 function displayGestionUtilisateur(){
   echo '   <div class="col-lg-3 col-sm-6">
-  <a href="GestionUtilisateurs.php">
+  <a href="GestionUtilisateursChoix.php">
   <div class="card-box bg-blue">
         <div class="inner">
             <h3> Gestion </h3>

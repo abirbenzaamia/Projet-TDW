@@ -1,6 +1,12 @@
 <?php
 include_once("View/GestionUtilisateursView.class.php");
 $gestionUsrView = new GestionUtilisateursview();
+include_once("Controller/GestionUtilisateursController.class.php");
+$gestionUsrCtrl = new GestionUtilisateursController();
+ if (isset($_GET['bannir'])) {
+    $id = $_GET['bannir'];
+    $gestionUsrCtrl->bannirUtilisateur($id);
+ }
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +68,7 @@ $gestionUsrView->displayNavBar('Gestion des clients');
     <style>
         .w-64 {
      width: 18rem; 
+     height: auto;
 }
     </style>
 </body>

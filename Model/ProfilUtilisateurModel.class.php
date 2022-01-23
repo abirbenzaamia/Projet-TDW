@@ -29,7 +29,6 @@ require_once("Model/SessionUtilisateur.class.php");
           }else{
               return FALSE;
           }
-
     }
     function getIdWilayasDep($id){
         $dbModel= new DataBaseModel();
