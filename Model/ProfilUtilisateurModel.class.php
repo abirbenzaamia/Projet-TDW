@@ -3,8 +3,6 @@
 require_once("Model/DataBaseModel.class.php");
 require_once("Model/SessionUtilisateur.class.php");
  class ProfilUtilisateurModel{
-   
-
     function getUserInfo($id){  
           $dbModel= new DataBaseModel();
           $db = $dbModel->connectDB();

@@ -4,47 +4,41 @@ $dir = dirname(__FILE__, 2);
 
     //defined('BASEPATH') OR exit('No direct script access allowed');
   require_once($dir."/Model/AnnonceModel.class.php");
+
   require_once($dir."/View/AnnonceView.class.php");
+
+  require_once($dir."/Model/UtilisateurModel.class.php");
+
  
+
   class AnnonceController{
 
-    function getAnnonceValide(){
-       $annonceMdl = new AnnonceModel();
-       $res = $annonceMdl->getAnnonceValide();
-       return $res;
-    }
     function displayWilayas(){
       $AnnonceMdl = new AnnonceModel();
       $res = $AnnonceMdl->displayWilayas();
       $AnnonceView = new AnnonceView();
-      $AnnonceView->displayWilayas($res);
+      $wilayas = $AnnonceView->displayWilayas($res);
+      return $wilayas;
      }  
      function displayTypeTransp(){
       $AnnonceMdl = new AnnonceModel();
       $res = $AnnonceMdl->displayTypeTransp();
       $AnnonceView = new AnnonceView();
-      $AnnonceView->displayTypeTransp($res);
+      $types = $AnnonceView->displayTypeTransp($res);
+      return $types;
      }  
      function displayPoids(){
       $AnnonceMdl = new AnnonceModel();
       $res = $AnnonceMdl->displayPoids();
       $AnnonceView = new AnnonceView();
-      $AnnonceView->displayPoids($res);
+      $poids = $AnnonceView->displayPoids($res);
+      return $poids;
      }
      function publierAnnonce($wilaya_dep,$wilaya_arv,$type_transp,$id_poids,$taille,$moyen_transp,$desc){      
       $AnnonceMdl = new AnnonceModel();
       $AnnonceMdl->publierAnnonce($wilaya_dep,$wilaya_arv,$type_transp,$id_poids,$taille,$moyen_transp,$desc);        
 }
-function displayFormAjoutAnnonce(){
-  $AnnonceView = new AnnonceView();
-  if (isset($_SESSION['id'])) {
-    $AnnonceView->displayFormAjoutAnnonce();
-  }else 
-  {
-    echo'';
-  }
- 
-}
+
 function displayAnnoncesValides(){
   $AnnonceMdl = new AnnonceModel();
   $res = $AnnonceMdl->displayAnnoncesValides();
@@ -67,6 +61,27 @@ function displayPoidsDetails($id){
   $res = $AnnonceMdl->getPoidsDetails($id);
   return $res;
 }
+function displayAnnonceDetails($id){
+  $AnnonceMdl = new AnnonceModel();
+  $res = $AnnonceMdl->getAnnonceDetails($id);
+  $AnnonceView = new AnnonceView();
+  $UtilisateurMdl = new UtilisateurModel();
+  if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+     if ($UtilisateurMdl->verifyTransporteur($id)) {
+      $AnnonceView->displayAnnonceDetailsConnTransporteur($res);
+     } else {
+      $AnnonceView->displayAnnonceDetailsConnClient($res);
+     }
+     
+   
+  }else 
+  {
+    $AnnonceView->displayAnnonceDetailsNonConn($res);
+  }
+ 
+}
+
 
 
 

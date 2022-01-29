@@ -9,7 +9,6 @@
   include("dbConn.php");
   include("check_login.php");
   $user_info = check_login($db);
-
   echo "<div class='profil_element'>
   <ul class='profile-wrapper'>
      <li>
@@ -25,16 +24,21 @@
        </div>
      </li>
    </ul>
-  </div>";
+  </div>
+  ";
  
 
  } else {
    echo   "<div class='conn'>
    <a  href= '#0' style='width:auto;'>Se connecter</a>
-   <a href='inscription.html' >S'inscrire</a>
+   <a href='inscription.php' >S'inscrire</a>
 </div>";
 }
-
+echo ' <br>
+<br>
+<br>
+<br>
+<br>';
  }
 
  function getUserInfo(){  

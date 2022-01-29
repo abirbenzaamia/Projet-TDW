@@ -71,6 +71,7 @@ include("Routes/UtilisateurRoute.php");
     </div>
   </form>
 </div>
+<script src="js/script.js"></script>
 </body>
 <?php
 include("Static/Footer.php");

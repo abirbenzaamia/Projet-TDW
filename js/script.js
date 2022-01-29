@@ -28,7 +28,6 @@ function carousel() {
   $(".conn a ").click(function(){
     document.getElementById('id01').style.display='block';
   }
-
   );
   var modal = document.getElementById('id01');
 
@@ -95,7 +94,7 @@ me.data('requestRunning', true);
     e.preventDefault();
         $.ajax({
           type: 'POST',
-          url: './Controller/MainController.php',
+          url: 'Controller/MainController.php',
           data: {pub:'pub',wilaya_dep:wilaya_dep,wilaya_arv:wilaya_arv,type_transp:type_transp,id_poids:id_poids,taille:taille,moyen_transp:moyen_transp,desc:desc },
           success: function(data){
             //$("span#pub").html(data);

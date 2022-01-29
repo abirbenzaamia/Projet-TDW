@@ -30,11 +30,6 @@ $NewsCtrl = new NewsController();
 include("Routes/UtilisateurRoute.php");
  
     ?>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <?php
         include("Static/NavBar.php");
         ?>

@@ -2,7 +2,10 @@
 $dir = dirname(__FILE__, 1);
 
 require_once($dir."/Controller/AnnonceController.class.php");
+require_once($dir."/Controller/AccueilController.class.php");
+
 $AnnonceCtrl = new AnnonceController();
+$AccueilCtrl = new AccueilController();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +29,7 @@ $AnnonceCtrl = new AnnonceController();
     </div>
    
     <?php 
-
 include("Routes/UtilisateurRoute.php");
- 
     ?>
   
     <div class="diaporama">
@@ -55,25 +56,7 @@ include("Routes/UtilisateurRoute.php");
     </div>
         <?php
         include("Static/NavBar.php");
-        ?>
-   
-     <form action="ResultatsRech.php" method="GET" class="rech">
-         <label for="">Rechercher une annonce</label>
-         <select name="dep" placeholder="Départ">
-         <option value="" disabled selected>Wilaya de départ</option>
-         <?php
-                           $AnnonceCtrl->displayWilayas();
-                           ?>
-         </select>
-         <select name="arv" placeholder="Arriver">
-         <option value="" disabled selected>Wilaya d'arriver</option>
-         <?php
-                           $AnnonceCtrl->displayWilayas();
-                           ?>
-         </select>
-         <button type="submit"> Rechercher</button>
-     </form>  
-          <?php
+          $AccueilCtrl->displaySectionRechAnnonces();
           $AnnonceCtrl->displayAnnoncesValides();
           ?>
         
@@ -83,33 +66,12 @@ include("Routes/UtilisateurRoute.php");
     
     <!-- formulaire pour ajouter une annonce -->
     <?php
-    $AnnonceCtrl->displayFormAjoutAnnonce();
+    $AccueilCtrl->displayFormAjoutAnnonce();
     ?>
     <!-- formulaire de connexion -->
-    <div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="accueil.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <span id="erreur"></span>
-      <label for="email" ><b>Email </b></label>
-      <input type="email" placeholder="Entrer votre email" name="email" id="email"required>
-
-      <label for="mdp"><b>mot de passe</b></label>
-      <input type="password" placeholder="Entrer votre mot de passe" name="mdp" id="mdp" required>
-        
-      <button type="submit">Se connecter</button>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Annuler</button>
-    </div>
-  </form>
-</div>
+    <?php
+    require_once("Static/FormConn.php");
+    ?>
      <script src="js/script.js"></script>  
 </body>
 <?php

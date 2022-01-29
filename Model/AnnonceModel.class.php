@@ -5,27 +5,6 @@ $dir = dirname(__FILE__, 2);
 require_once($dir."/Model/DataBaseModel.class.php");
  class AnnonceModel{
    
-
-    function getAnnonceValide(){
-    
-          $dbModel= new DataBaseModel();
-          $db = $dbModel->connectDB();
-                 $results = array();
-                 $sql= " SELECT * FROM annonce_valide limit 8";
-                 $result = $db->query($sql);
-                 if (mysqli_num_rows($result) > 0) {
-                     // output data of each row
-                     while($row = mysqli_fetch_assoc($result)) {
-                         $id = $row['id'];
-                       $query = " SELECT * FROM `annonce_utilisateur` WHERE id = '".$id."'";
-                       $res = $db->query($query);
-                       while($row1 = mysqli_fetch_assoc($res)) {
-                         array_push($results, $row1);
-                       }                      
-                     }
-                   }
-          return $results;
-    }  
     function displayWilayas(){
      
       $dbModel= new DataBaseModel();
@@ -143,6 +122,20 @@ require_once($dir."/Model/DataBaseModel.class.php");
    }
 
 return $results[0]; 
+   }
+   function getAnnonceDetails($id){
+    $dbModel= new DataBaseModel();
+    $db = $dbModel->connectDB();
+    $sql = "SELECT * FROM annonce_utilisateur LEFT JOIN (SELECT annonce_valide.id , annonce_valide.tarif FROM annonce_valide LEFT JOIN annonce_effect on annonce_valide.id = annonce_effect.id WHERE annonce_effect.id is null ) as res on annonce_utilisateur.id = res.id where res.id is not null and annonce_utilisateur.id = '".$id."';";
+    $result = $db->query($sql);
+    $results = array();
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while($row = mysqli_fetch_assoc($result)) {                   
+          array_push($results, $row);                     
+      }
+  } 
+  return $results[0];
    }
        
 
