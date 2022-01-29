@@ -11,8 +11,6 @@ session_start();
 		$email = $_POST['email'];
 		$mdp= md5($_POST['mdp']) ;
 
-		
-
 			//read from database
 			$query = "SELECT * FROM `utilisateurs` WHERE email = '$email' ";
 			$result = mysqli_query($db, $query);

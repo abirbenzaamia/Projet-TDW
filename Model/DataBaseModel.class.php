@@ -6,7 +6,7 @@
     //connecter à la base de données
     try {
         $servername = "localhost";
-        $dbname = "projet";
+        $dbname = "test";
         $username = "root";
         $password = ""; 
         $db = mysqli_connect($servername, $username, $password, $dbname);           

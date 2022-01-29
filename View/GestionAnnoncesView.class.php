@@ -26,9 +26,9 @@ class GestionAnnoncesView{
             <td class="py-3 px-6 text-center">
             '.$res[$i]['date_ajout'].'
             </td>';
-            if ($res[$i]['etat'] == 'en attente') {
+            if ($res[$i]['etat'] == null) {
                echo' <td class="py-3 px-6 text-center">
-               <span class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">'.$res[$i]['etat'].'</span>
+               <span class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">En attente</span>
            </td><td class="py-3 px-6 text-center">
            /
           </td>';
@@ -68,23 +68,12 @@ class GestionAnnoncesView{
             <td class="py-3 px-6 text-center">
             '.$res[$i]['date_ajout'].'
             </td>';
-            if ($res[$i]['etat'] == 'en attente') {
-               echo' <td class="py-3 px-6 text-center">
-               <span class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">'.$res[$i]['etat'].'</span>
-           </td><td class="py-3 px-6 text-center">
-           /
-          </td>';
-            } else {
-                echo '<td class="py-3 px-6 text-center">
-                <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">'.$res[$i]['etat'].'</span>
-            </td>';
-                echo' <td class="py-3 px-6 text-center">
-                '.$res[$i]['idTC'].' '.$res[$i]['idTNC'].'
-               </td>';
-            }
+        
             
             echo'<td class="py-3 px-6 text-center">
+             <a href="GestionAnnonces.php?valider='.$res[$i]['id'].'&dep='.$res[$i]['wilaya_dep'].'&arv='.$res[$i]['wilaya_arv'].'"class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Valider</a>
              <a href="GestionTransporteurs.php?bannir='.$res[$i]['id'].'"class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">Annuler</a>
+
             </td>
         </tr>';
         }

@@ -30,7 +30,7 @@
 
  } else {
    echo   "<div class='conn'>
-   <a  style='width:auto;'>Se connecter</a>
+   <a  href= '#0' style='width:auto;'>Se connecter</a>
    <a href='inscription.html' >S'inscrire</a>
 </div>";
 }

@@ -70,10 +70,19 @@ $('form>div.container button').click(function(e){
 });
 
 //script pour ajouter une annonce 
+$("body > div.btn_ajout_annonce > a ").click(function(){
+  document.querySelector('.ajout_annonce').style.display='block';
+}
+);
 
-$('div.ajout_annonce > form > button').click(function(e){
+$('body > div.col-lg-7.contact-form__wrapper.p-5.order-lg-1.ajout_annonce > form > div > div:nth-child(8) > button').click( function(e){
 
   let valid = this.form.checkValidity(); 
+  var me = $(this);
+  if ( me.data('requestRunning') ) {
+    return;
+}
+me.data('requestRunning', true);
   if (valid) {
     let wilaya_dep = $("#dep").val();
     let wilaya_arv = $("#arv").val();
@@ -81,25 +90,34 @@ $('div.ajout_annonce > form > button').click(function(e){
     let id_poids = $("#poids").val();
     let taille = $("#volume").val();
     let moyen_transp = $("#moy_transp").val();
+    let desc =  $("#description").val();
     console.log(wilaya_dep,wilaya_arv,type_transp,id_poids,taille,moyen_transp);
     e.preventDefault();
-
         $.ajax({
           type: 'POST',
-          url: 'Routes/AnnonceUtilisateurRoute.php',
-          data: {pub:'pub',wilaya_dep:wilaya_dep,wilaya_arv:wilaya_arv,type_transp:type_transp,id_poids:id_poids,taille:taille,moyen_transp:moyen_transp },
+          url: './Controller/MainController.php',
+          data: {pub:'pub',wilaya_dep:wilaya_dep,wilaya_arv:wilaya_arv,type_transp:type_transp,id_poids:id_poids,taille:taille,moyen_transp:moyen_transp,desc:desc },
           success: function(data){
-            $("span#pub").html(data);
+            //$("span#pub").html(data);
             //data will contain the vote count echoed by the controller i.e.  
            //then append the result where ever you want like
            if (data==='success') {
-             $("span#pub").html(data);
+            swal({
+              title: "L'annonce est ajoutée !",
+              text: "Veuillez attendre la validation du site'",
+              icon: "success",
+            });
+           
+            
             //window.location.replace("accueil.php");
            } else {
             $("span#pub").html(data);
            }
             //data will be containing the vote count which you have echoed from the controlle
-             }
+             },
+             complete: function() {
+              me.data('requestRunning', false);
+          }
         });
    
 }

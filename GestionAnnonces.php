@@ -3,6 +3,12 @@ include_once("View/GestionUtilisateursView.class.php");
 $gestionUsrView = new GestionUtilisateursview();
 require_once("Controller/GestionAnnoncesController.class.php");
 $gestionAnnCtrl = new GestionAnnoncesController();
+if (isset($_GET['valider']) && isset($_GET['dep']) && isset($_GET['arv'])) {
+    $id = $_GET['valider'];
+    $idDep = $_GET['dep'];
+    $idArv = $_GET['arv'];
+    $gestionAnnCtrl->validerAnnonce($id,$idDep,$idArv);
+ }
 ?>
 
 <!DOCTYPE html>
@@ -133,13 +139,17 @@ $gestionAnnCtrl->displayAnnoncesValid();
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-left">Identifiant</th>
                                 <th class="py-3 px-6 text-left">Client</th>
-                                <th class="py-3 px-6 text-center">Etat</th>
-                                <th class="py-3 px-6 text-center">Valider</th>
-                                <th class="py-3 px-6 text-center">Chhh</th>
+                                <th class="py-3 px-6 text-center">Type de transport</th>
+                                <th class="py-3 px-6 text-center">date</th>
+                                <th class="py-3 px-6 text-center">actions</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm">
-                         
+                        <?php
+
+$gestionAnnCtrl->displayAnnoncesNonValid();
+
+?>
                          </tbody>
                     </table>
                 </div>
@@ -148,11 +158,11 @@ $gestionAnnCtrl->displayAnnoncesValid();
                     <table class="min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                            <th class="py-3 px-6 text-left">Identifiant</th>
+                            <th class="py-3 px-6 text-left">Id</th>
                                 <th class="py-3 px-6 text-left">Client</th>
-                                <th class="py-3 px-6 text-center">Etat</th>
-                                <th class="py-3 px-6 text-center">Valider</th>
-                                <th class="py-3 px-6 text-center">hhh</th>
+                                <th class="py-3 px-6 text-center">Type de transport</th>
+                                <th class="py-3 px-6 text-center">date</th>
+                                <th class="py-3 px-6 text-center">actions</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm">
