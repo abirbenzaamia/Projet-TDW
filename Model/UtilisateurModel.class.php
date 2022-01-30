@@ -109,6 +109,25 @@ class UtilisateurModel{
 return $results[0];  
 
     }
+    // function contacterTransporteur($idU,$idT,$idA){
+
+    // }
+    function PostulerAnnonce($idT,$idA){
+        $dbModel= new DataBaseModel();
+        $db = $dbModel->connectDB();
+        $sql = "INSERT INTO `demande_postuler`(`idT`, `idA`) VALUES ('".$idT."','".$idA."')" ;// la requete sql de l'insertion
+        $result = $db->query($sql); 
+    }
+    function ConfirmPost($idT,$idA){
+        $dbModel= new DataBaseModel();
+        $db = $dbModel->connectDB();
+        $sql = "INSERT INTO `annonce_effect`(`id`, `idTNC`) VALUES ('".$idA."','".$idT."')" ;// la requete sql de l'insertion
+        $result = $db->query($sql); 
+        if ($result == false) {
+            $sql = "INSERT INTO `annonce_effect`(`id`, `idTC`) VALUES ('".$idA."','".$idT."')" ;// la requete sql de l'insertion
+            $result = $db->query($sql); 
+        }
+    }
 
 }
 ?>

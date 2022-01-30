@@ -81,6 +81,14 @@ function displayAnnonceDetails($id){
   }
  
 }
+function displaySuggestionsTransporteurs($idDep,$idArv){
+  $AnnonceMdl = new AnnonceModel();
+  $res = $AnnonceMdl->getSuggestionsTransporteurs($idDep, $idArv);
+  $AnnonceView = new AnnonceView();
+  return ($AnnonceView->displaySuggestionsTransp($res));
+
+ 
+}
 
 
 

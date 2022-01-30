@@ -1,6 +1,7 @@
 <?php
 $dir = dirname(__FILE__, 2);
  require_once($dir."/Controller/AnnonceController.class.php");
+ require_once($dir."/Controller/UtilisateurController.class.php");
  class AnnonceView{
 
      function displayWilayas($results){
@@ -144,7 +145,7 @@ $dir = dirname(__FILE__, 2);
             <p class="text-sm"> <b>Tarif proposé </b> '.$res['tarif'].' DA</p> 
             <p class="text-sm"> <b>Description</b> '.$res['description'].'</p> 
             <div class="postuler">
-            <a href="#0">Postuler</a>
+            <a type="submit" name="post" href="AnnonceDetails.php?id_annonce='.$res['id'].'&idA='.$res['id'].'">Postuler</a>
             </div>
           </div>
           <div class="col-md-4 op-7">
@@ -156,6 +157,34 @@ $dir = dirname(__FILE__, 2);
         </div>
       </div>';
 
+      }
+     
+  
+      function displaySuggestionsTransp($res){
+        $html = '';
+        $utilisateurCtrl = new UtilisateurController();
+        $html = '<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>';
+        for ($i=0; $i <sizeof($res) ; $i++) { 
+          $infoU = $utilisateurCtrl->getNomPrenomUtilisateur($res[$i]['idT']);
+          $html=$html.'  <tr>
+          <th scope="row">'.$res[$i]['idT'].'</th>
+          <td>'.$infoU['nom'].'</td>
+          <td>'.$infoU['prenom'].'</td>
+          <td><a type="button" class="btn btn-outline-success">Contacter</a></td>
+        </tr>';
+        }
+        $html = $html.'</tbody>
+    </table>';
+    return $html;
       }
 
     }

@@ -38,7 +38,7 @@ if (isset($_GET['valider']) && isset($_GET['dep']) && isset($_GET['arv'])) {
     padding-left: 0.5rem;
     padding-right: 0em; 
 }
-.non-valide , .archive{
+.non-valide , .archive , .signal{
     display: none;
 }
 
@@ -51,28 +51,44 @@ $(document).ready(function(){
         $('.non-valide').show();
         $('.valide').hide();
         $('.archive').hide();
+        $('.signal').hide();
         $("#non-valide").css("color", "rgba(29,78,216,var(--tw-text-opacity))");
         $("#valide").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
         $("#archive").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
+        $("#signal").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
         
     });
     $('#valide').click(function(){
         $('.non-valide').hide();
         $('.archive').hide();
+        $('.signal').hide();
         $('.valide').show();
         $("#valide").css("color", "rgba(29,78,216,var(--tw-text-opacity))");
         $("#non-valide").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
         $("#archive").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
+        $("#signal").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
         
     }); 
      $('#archive').click(function(){
         $('.non-valide').hide();
         $('.archive').show();
         $('.valide').hide();
-
+        $('.signal').hide();
         $("#archive").css("color", "rgba(29,78,216,var(--tw-text-opacity))");
         $("#valide").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
         $("#non-valide").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
+        $("#signal").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
+        
+    });
+    $('#signal').click(function(){
+        $('.non-valide').hide();
+        $('.signal').show();
+        $('.valide').hide();
+        $('.archive').hide();
+        $("#signal").css("color", "rgba(29,78,216,var(--tw-text-opacity))");
+        $("#valide").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
+        $("#non-valide").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
+        $("#archive").css("color", "rgba(59,130,246,var(--tw-text-opacity))");
         
     });
    
@@ -104,6 +120,9 @@ $gestionUsrView->displayNavBar('Gestion des annonces');
   </li>
   <li class="mr-1">
     <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#" id="archive">Annonces archivées</a>
+  </li>
+  <li class="mr-1">
+    <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#" id="signal">Gestions des signalements</a>
   </li>
   
 </ul>
@@ -153,7 +172,7 @@ $gestionAnnCtrl->displayAnnoncesNonValid();
                          </tbody>
                     </table>
                 </div>
-                  <!-- TABLE DES ANNONCES -->
+                  <!-- TABLE DES ANNONCES ARCHIVÉES -->
                   <div class="bg-white shadow rounded-sm my-2.5 overflow-x-auto archive">
                     <table class="min-w-max w-full table-auto">
                         <thead>
@@ -167,6 +186,27 @@ $gestionAnnCtrl->displayAnnoncesNonValid();
                         </thead>
                         <tbody class="text-gray-600 text-sm">
                          
+                         </tbody>
+                    </table>
+                </div>
+                     <!-- TABLE DES Signalement -->
+                     <div class="bg-white shadow rounded-sm my-2.5 overflow-x-auto signal">
+                    <table class="min-w-max w-full table-auto">
+                        <thead>
+                            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6 text-left">utilisateur</th>
+                                <th class="py-3 px-6 text-center">Type Utilisateur</th>
+                                <th class="py-3 px-6 text-center">id annonce</th>
+                                <th class="py-3 px-6 text-left">Signalé</th>
+                                <th class="py-3 px-6 text-center">Cause</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-600 text-sm">
+                        <?php
+
+$gestionAnnCtrl->displaySignalements();
+
+?>
                          </tbody>
                     </table>
                 </div>

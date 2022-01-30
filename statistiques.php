@@ -18,7 +18,7 @@ $statView = new StatistiquesView();
 <body>
 <?php
 include("Static/Logo.php");
-include("Routes/UtilisateurRoute.php");
+include("Config/UtilisateurRoute.php");
 
 ?>
 <br>

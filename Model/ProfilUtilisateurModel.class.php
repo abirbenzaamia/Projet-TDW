@@ -161,17 +161,29 @@ require_once("Model/SessionUtilisateur.class.php");
         $sql = "INSERT INTO `signalements_transporteurs`(`id_utilisateur`, `id_transporteur`, `id_annonce`, `cause`) VALUES ('".$idU."','".$idT."','".$idA."','".$cause."')";
         $result = $db->query($sql);
     }
-    function signalerClient($id,$idT){
-        $dbModel= new DataBaseModel();
-        $db = $dbModel->connectDB();
-        $sql = "";
-    }
+  
     function noterTransporteurAnnonce($id,$idT,$note){
         $dbModel= new DataBaseModel();
         $db = $dbModel->connectDB();
     }
+    function getDemandePostule($idA){
+        $dbModel= new DataBaseModel();
+        $db = $dbModel->connectDB();
+        $sql = "SELECT * FROM `demande_postuler` WHERE idA=".$idA."";
+        $results = array();
+        $result = $db->query($sql);
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {                   
+              array_push($results, $row);                     
+          }
+      }
+      return $results;
+     }
+
+    }
     
 
 
-}
+
 ?>

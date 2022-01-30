@@ -42,7 +42,7 @@ if (isset($_GET['idA']) && isset($_GET['idU']) && isset($_GET['idT'])) {
     </div>
    
     <?php 
-include("Routes/UtilisateurRoute.php");
+include("Config/UtilisateurRoute.php");
     ?>
      <?php
         include("Static/NavBar.php");

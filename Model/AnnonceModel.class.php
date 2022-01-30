@@ -138,8 +138,23 @@ return $results[0];
   return $results[0];
    }
    
-   function getSuggestionsTransporteurs(){
-     
+   function getSuggestionsTransporteurs($idDep,$idArv){
+    $dbModel= new DataBaseModel();
+    $db = $dbModel->connectDB();
+    $sql = "SELECT wilaya_dep.idT , wilaya_dep.idW as dep , wilaya_arv.idW as arv FROM `wilaya_dep` inner join wilaya_arv on wilaya_dep.idT WHERE wilaya_dep.idW =".$idDep." AND wilaya_arv.idW =".$idArv." GROUP BY wilaya_dep.idT;";
+    $result = $db->query($sql);
+    echo $db->error;
+    $results = array();
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+  
+        while($row = mysqli_fetch_assoc($result)) {     
+                  
+          array_push($results, $row);                     
+      }
+  } 
+
+  return $results;
    }
        
 

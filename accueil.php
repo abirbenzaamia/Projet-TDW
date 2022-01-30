@@ -29,7 +29,7 @@ $AccueilCtrl = new AccueilController();
     </div>
    
     <?php 
-include("Routes/UtilisateurRoute.php");
+include("Config/UtilisateurRoute.php");
     ?>
   
     <div class="diaporama">

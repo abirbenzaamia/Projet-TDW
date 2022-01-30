@@ -1,11 +1,20 @@
 <?php
 $dir = dirname(__FILE__, 1);
 require_once($dir."/Controller/ProfilUtilisateurController.class.php");
+require_once($dir."/Controller/UtilisateurController.class.php");
 $profilCtrl = new ProfilUtilisateurController();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $profilCtrl->SupprimerAnnonce($id);  
  }
+ if (isset($_GET['idA']) && isset($_GET['idT'])) {
+    $idA = $_GET['idA'];
+    $idT = $_GET['idT'];
+$utilisateurCtrl = new UtilisateurController();
+$utilisateurCtrl->ConfirmPost($idT, $idA);
+    
+ }
+
 
  
 ?>
@@ -33,7 +42,7 @@ if (isset($_GET['id'])) {
     </div>
    
     <?php 
-include("Routes/UtilisateurRoute.php");
+include("Config/UtilisateurRoute.php");
     ?>
      <?php
         include("Static/NavBar.php");

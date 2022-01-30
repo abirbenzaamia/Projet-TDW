@@ -47,5 +47,22 @@ class UtilisateurController{
         $res = $UtilisateurMdl->getNomPrenomUtilisateur($id);
         return $res;
     }
+    function verifyTransporteur($id){
+        $UtilisateurMdl = new UtilisateurModel();
+        $res = $UtilisateurMdl->verifyTransporteur($id);
+        if ($res) {
+        return TRUE;
+        }else{
+            return FALSE;
+        }
+     }
+     function PostulerAnnonce($idT,$idA){
+        $UtilisateurMdl = new UtilisateurModel();
+        $UtilisateurMdl->PostulerAnnonce($idT,$idA);
+    }
+    function ConfirmPost($idT,$idA){
+        $UtilisateurMdl = new UtilisateurModel();
+        $UtilisateurMdl->ConfirmPost($idT,$idA);
+    }
 }
 ?>

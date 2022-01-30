@@ -35,7 +35,7 @@ if (isset($_GET['id'])) {
     </div>
    
     <?php 
-include("Routes/UtilisateurRoute.php");
+include("Config/UtilisateurRoute.php");
     ?>
      <?php
         include("Static/NavBar.php");

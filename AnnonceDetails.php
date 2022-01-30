@@ -1,10 +1,17 @@
 <?php
 $dir = dirname(__FILE__, 1);
-
+session_start();
 require_once($dir."/Controller/AnnonceController.class.php");
+require_once($dir."/Controller/UtilisateurController.class.php");
 $AnnonceCtrl = new AnnonceController();
 if (isset($_GET['id_annonce'])) {
     $id = $_GET['id_annonce'];
+ }
+ if (isset($_GET['idA'])) {
+    $idA = $_GET['idA'];
+    $idT = $_SESSION['id'];
+    $utilisateurCtrl = new UtilisateurController();
+    $utilisateurCtrl->PostulerAnnonce($idT,$idA);
  }
 ?>
 <!DOCTYPE html>
@@ -30,7 +37,7 @@ if (isset($_GET['id_annonce'])) {
     </div>
     <?php 
 
-include("Routes/UtilisateurRoute.php");
+include("Config/UtilisateurRoute.php");
  
     ?>
     <?php

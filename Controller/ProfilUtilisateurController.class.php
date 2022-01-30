@@ -91,6 +91,14 @@
     $profilMdl->signalerTransporteurAnnonce($idA, $idT, $idU, $cause);
 
   }
+  function displayDemandePostule($idA){
+    $profilMdl = new ProfilUtilisateurModel();
+    $res = $profilMdl->getDemandePostule($idA);
+    $profilView = new ProfilutilisateurView();
+    return ($profilView->displayDemandePostule($res));
+    
+
+  }
 
 
 

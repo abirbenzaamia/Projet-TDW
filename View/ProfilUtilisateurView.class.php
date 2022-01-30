@@ -121,7 +121,11 @@ echo ' <br>
    }
 
  function displayAnnonceValide($res){
+   $AncCtrl = new AnnonceController();
+   $profilCtrl = new ProfilUtilisateurController();
    for ($i=0; $i < sizeof($res) ; $i++) { 
+     $sugg = $AncCtrl->displaySuggestionsTransporteurs($res[$i]['wilaya_dep'],$res[$i]['wilaya_arv']);
+     $dmd = $profilCtrl->displayDemandePostule($res[$i]['id']);
      echo ' <div class="list-group">
      <div  class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-hourglass-split" viewBox="0 0 16 16">
@@ -140,15 +144,25 @@ echo ' <br>
            <a href="ProfilUtilisateur.php?id='.$res[$i]['id'].'"  type="button" class="btn btn-outline-danger">Supprimer</a>
            <a  href="ModifierAnnonce.php?modif='.$res[$i]['id'].'" type="button" class="btn btn-outline-primary modif">Modifier</a>
            </div>
+           <div class="suggestion">
+           <p> <b>Suggestion des Transporteurs</b></p>
+           '.$sugg.'
+                    </div>
+                    <div class="suggestion">
+           <p> <b>Demande de postule</b></p>
+           '.$dmd.'
+                    </div>
           
          </div>
          <div >
          <small class="opacity-50 text-nowrap">Ajouté le '.$res[$i]['date_ajout'].'</small>
+         
          <br>
          </div>
- 
+        
        </div>
      </div>  
+     
    </div>';    
    }
  }
@@ -275,6 +289,33 @@ echo ' <br>
       </div>
     </form>
   </div>';
+      }
+
+      function displayDemandePostule($res){
+        $html = '';
+        $utilisateurCtrl = new UtilisateurController();
+        $html = '<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>';
+        for ($i=0; $i <sizeof($res) ; $i++) { 
+          $infoU = $utilisateurCtrl->getNomPrenomUtilisateur($res[$i]['idT']);
+          $html=$html.'  <tr>
+          <th scope="row">'.$res[$i]['idT'].'</th>
+          <td>'.$infoU['nom'].'</td>
+          <td>'.$infoU['prenom'].'</td>
+          <td><a href="ProfilUtilisateur.php?idA='.$res[$i]['idA'].'&idT='.$res[$i]['idT'].'" type="button" class="btn btn-outline-success">Confirmer</a></td>
+        </tr>';
+        }
+        $html = $html.'</tbody>
+    </table>';
+    return $html;
       }
 
 

@@ -21,6 +21,15 @@ class GestionAnnoncesController{
         $annonceMdl->validerAnnonce($id,$tarif);
         
     }
+    function displaySignalements(){
+        $annonceMdl = new GestionAnnoncesModel();
+        $res = $annonceMdl->getSignalements();
+        $annonceView = new GestionAnnoncesView();
+        $annonceView->displaySignalemens($res);
+        
+
+
+    }
 
 }
 ?>

@@ -28,7 +28,7 @@ $AccueilCtrl = new AccueilController();
     </div>
    
     <?php 
-include("Routes/UtilisateurRoute.php");
+include("Config/UtilisateurRoute.php");
 include("Static/NavBar.php");
 $AccueilCtrl->displayFormInscription();
     ?>

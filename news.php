@@ -27,7 +27,7 @@ $NewsCtrl = new NewsController();
     </div>
     <?php 
 
-include("Routes/UtilisateurRoute.php");
+include("Config/UtilisateurRoute.php");
  
     ?>
     <?php
