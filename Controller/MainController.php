@@ -18,6 +18,7 @@ require_once($dir."/Controller/ProfilUtilisateurController.class.php");
     $taille = $_POST['taille'];
     $moyen_transp = $_POST['moyen_transp'];
     $desc = $_POST['desc'];
+    
         $annonceCtrl = new AnnonceController();
         $annonceCtrl->publierAnnonce($wilaya_dep,$wilaya_arv,$type_transp,$id_poids,$taille,$moyen_transp,$desc);
    }

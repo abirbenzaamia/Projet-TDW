@@ -37,6 +37,7 @@ class GestionAnnoncesModel{
     $db = $dbModel->connectDB();
     $sql = "INSERT INTO `annonce_valide`(`id`, `tarif`) VALUES ('".$id."','".$tarif."')";
     $result = $db->query($sql);
+    echo $db->error;
 
  }
  function getTarif ($idDep , $idArv){

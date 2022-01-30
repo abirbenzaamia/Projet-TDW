@@ -26,7 +26,7 @@ function displayGestionUtilisateur(){
         <div class="icon">
         <i class="fa fa-users"></i>
         </div>
-        <a href="#" class="card-box-footer">Voir plus <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="GestionUtilisateursChoix.php" class="card-box-footer">Voir plus <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </a>
   
@@ -44,7 +44,7 @@ function displayGestionAnnonce(){
         <div class="icon">
         <i class="bi bi-megaphone-fill"></i>
         </div>
-        <a href="#" class="card-box-footer">Voir plus <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="GestionAnnonces.php" class="card-box-footer">Voir plus <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </a>
   

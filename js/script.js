@@ -100,7 +100,6 @@ me.data('requestRunning', true);
             //$("span#pub").html(data);
             //data will contain the vote count echoed by the controller i.e.  
            //then append the result where ever you want like
-           if (data==='success') {
             swal({
               title: "L'annonce est ajoutée !",
               text: "Veuillez attendre la validation du site'",
@@ -109,9 +108,7 @@ me.data('requestRunning', true);
            
             
             //window.location.replace("accueil.php");
-           } else {
-            $("span#pub").html(data);
-           }
+         
             //data will be containing the vote count which you have echoed from the controlle
              },
              complete: function() {

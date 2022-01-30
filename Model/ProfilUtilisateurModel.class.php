@@ -1,7 +1,7 @@
 <?php
-
-require_once("Model/DataBaseModel.class.php");
-require_once("Model/SessionUtilisateur.class.php");
+$dir = dirname(__FILE__, 2);
+require_once($dir."/Model/DataBaseModel.class.php");
+require_once($dir."/Model/SessionUtilisateur.class.php");
  class ProfilUtilisateurModel{
     function getUserInfo($id){  
           $dbModel= new DataBaseModel();
@@ -147,8 +147,9 @@ require_once("Model/SessionUtilisateur.class.php");
      function archiverAnnonce($id,$idUtilisateur,$idDep,$idArv,$type,$idPoids,$moyen,$date){
         $dbModel= new DataBaseModel();
         $db = $dbModel->connectDB();
-        $sql = "INSERT INTO `annonces_archivees`(`id`, `id_utilisateur`, `wilaya_dep`, `wilaya_arv`, `type_transp`, `id_poids`, `moyen_transp`, `date_ajout`) VALUES ('".$id."','".$idUtilisateur."','".$idDep."','".$idArv."','".$type."','".$idPoids.",'".$moyen."','".$date."')";
+        $sql = "INSERT INTO `annonces_archivees`(`id`, `id_utilisateur`, `wilaya_dep`, `wilaya_arv`, `type_transp`, `id_poids`, `moyen_transp`, `date_ajout`) VALUES ('".$id."','".$idUtilisateur."','".$idDep."','".$idArv."','".$type."','".$idPoids."','".$moyen."','".$date."')";
         $result = $db->query($sql);
+        //echo $db->error;
      }
      function modifierAnnonce($id,$idDep,$idArv,$type,$idPoids,$moyen,$taille,$desc){
         $dbModel= new DataBaseModel();

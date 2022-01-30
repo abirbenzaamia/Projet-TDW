@@ -1,10 +1,11 @@
 
 <?php
   session_start();
-  require_once("Controller/ProfilUtilisateurController.class.php");
-  require_once("check_login.php");
-  require_once("Controller/AnnonceController.class.php");
-  require_once("Controller/UtilisateurController.class.php");
+  $dir = dirname(__FILE__, 2);
+  require_once($dir."/Controller/ProfilUtilisateurController.class.php");
+  require_once($dir."/check_login.php");
+  require_once($dir."/Controller/AnnonceController.class.php");
+  require_once($dir."/Controller/UtilisateurController.class.php");
   
  class ProfilutilisateurView{
 

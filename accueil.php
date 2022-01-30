@@ -31,6 +31,9 @@ $AccueilCtrl = new AccueilController();
     <?php 
 include("Config/UtilisateurRoute.php");
     ?>
+    <div class="admin">
+        <a href="AdminAuthentification.php">se connecter comme Admin</a>
+    </div>
   
     <div class="diaporama">
       <div class="container">

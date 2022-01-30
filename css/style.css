@@ -383,7 +383,10 @@ nav.navBar li a::before{
 .profile:hover .menu {
 	display:block;
 }
-
+.admin{
+  position: absolute;
+  right: 150px;
+}
 /* authentification form style */
 /* Full-width input fields */
 #id01 input[type=email], #id01 input[type=password] {

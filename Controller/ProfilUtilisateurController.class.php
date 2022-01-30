@@ -1,8 +1,9 @@
 <?php
   session_start();  
-        require_once("Model/ProfilUtilisateurModel.class.php");
-        require_once("View/ProfilUtilisateurView.class.php");   
-        require_once("Model/AnnonceModel.class.php");
+  $dir = dirname(__FILE__, 2);
+        require_once($dir."/Model/ProfilUtilisateurModel.class.php");
+        require_once($dir."/View/ProfilUtilisateurView.class.php");   
+        require_once($dir."/Model/AnnonceModel.class.php");
 
  class ProfilUtilisateurController{
     function displayUserInfo(){  
@@ -65,8 +66,8 @@
     $idPoids = $res['id_poids'];
     $moyen = $res['moyen_transp'];
     $date = $res['date_ajout'];
-    $profilMdl->supprimerAnnonce($id);
     $profilMdl->archiverAnnonce($id,$idUtilisateur, $idDep, $idArv, $type, $idPoids, $moyen, $date);
+    $profilMdl->supprimerAnnonce($id);
     
   }
   function displayFormModif(){
