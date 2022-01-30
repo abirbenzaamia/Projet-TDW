@@ -2,11 +2,20 @@
 $dir = dirname(__FILE__, 1);
 require_once($dir."/Controller/ProfilUtilisateurController.class.php");
 $profilCtrl = new ProfilUtilisateurController();
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $profilCtrl->SupprimerAnnonce($id);  
+if (isset($_GET['idA']) && isset($_GET['idU']) && isset($_GET['idT'])) {
+    $idA = $_GET['idA'];
+    $idU = $_GET['idU'];
+    $idT = $_GET['idT'];
  }
-
+ if (isset($_POST['signal'])) {
+    $idA = $_POST['idA'];
+    $idU = $_POST['idU'];
+    $idT = $_POST['idT'];
+    $cause = $_POST['cause'];
+    $profilCtrl = new ProfilUtilisateurController();
+    $profilCtrl->signalerTransporteurAnnonce($idA, $idT, $idU, $cause);
+     header("Location:ProfilUtilisateur.php");
+ }
  
 ?>
 
@@ -95,7 +104,9 @@ include("Routes/UtilisateurRoute.php");
     
   
 </div>
-
+<?php
+$profilCtrl->displayFormSignal($idA, $idT, $idU);
+?>
 
 
 

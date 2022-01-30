@@ -28,6 +28,8 @@ class UtilisateurModel{
             echo "l'adresse email n'existe pas veuillez s'incrire";
         }
      }
+     //vérifier s'il s'agit d'un trasporteur simple ou un transporteur
+     
      function verifyTransporteur($id){
         $dbModel= new DataBaseModel();
         $db = $dbModel->connectDB();
@@ -39,6 +41,7 @@ class UtilisateurModel{
             return FALSE;
         }
      }
+    //  inscription 
      function verifyExisteUtilisateur($email,$tel){
         $dbModel= new DataBaseModel();
         $db = $dbModel->connectDB();
@@ -90,6 +93,21 @@ class UtilisateurModel{
             $result = $db->query($sql);
          
           }
+    }
+    function getNomPrenomUtilisateur($id){
+        $dbModel= new DataBaseModel();
+        $db = $dbModel->connectDB();
+        $results = array();
+        $sql = "SELECT nom , prenom from utilisateurs WHERE id = ".$id." ";
+        $result = $db->query($sql);    
+        if (mysqli_num_rows($result) > 0) {
+         // output data of each row
+         while($row = mysqli_fetch_assoc($result)) {                   
+             array_push($results, $row);                     
+         }
+       }
+return $results[0];  
+
     }
 
 }

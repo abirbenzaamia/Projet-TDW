@@ -1,0 +1,384 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+border: solid #3a0ca3;
+border-width:4px;
+box-sizing: border-box;
+margin: 5%;
+padding: 5%;
+height: 100%;
+line-height: normal;
+background-color: #f2f6fc;
+
+
+}
+.logo{
+height: 100x;
+width: 150px;
+float: left;
+}
+/* les deux buttons d'inscription et de connexion */
+.conn{
+
+float: right;
+padding: 20px;
+}
+
+.conn a  {
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 25px;
+    font-size: 16px; 
+    cursor: pointer;
+    border-color: white;
+    background-color: #3a0ca3;
+    margin: 5px;
+}
+.actions {
+    margin: 5px;
+
+}
+.actions button {
+    /* margin: 5px; */
+}
+
+/* le menu et navigation entre les pages  */
+nav.navBar {
+    margin: 25px;
+    background: #f9f9f9;
+    padding: 16px; 
+    border-radius: 6px;
+}
+nav.navBar ul {
+    margin: 0px;
+}
+ nav.navBar .menuItems {
+    list-style: none;
+    display: flex;
+    justify-content:space-around;  
+}
+
+nav.navBar li a {
+    text-decoration: none;
+    color: #8f8f8f;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    text-transform: uppercase; 
+    margin: 0px;
+}
+nav.navBar li{
+    height: 18px;
+}
+nav.navBar .menuItems li:nth-child(1) a{
+    color: #FF8500;
+    font-weight: bold;
+}
+nav.navBar li a::before{
+    content: attr(data-item);
+    transition: 0.5s;
+    color: #FF8500;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    overflow: hidden;
+}
+ nav.navBar li a:hover::before{   
+    margin: 0px;
+    width: 100%;
+    height: auto;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Profil section style*/
+.profil_element{
+    float: right;
+}
+
+.profil_element ul, .profil_element li {
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+.profil_element a {text-decoration:none;}
+
+.profile-wrapper {
+	width:200px;
+	position:relative;
+	margin:50px auto;
+}
+.profile-wrapper::after {
+	content: '';
+	position: absolute;
+	top: 20px;
+	right: 10px;
+	border-color: #333 transparent transparent;
+	border-width: 6px;
+	border-style: solid;
+}
+.profile-wrapper::before {
+	content: '';
+	position: absolute;
+	top: 20px;
+	right: 10px;
+	border-color: #eee transparent transparent;
+	border-width: 6px;
+	border-style: solid;
+}
+.profile-wrapper:hover::after {
+	border-color: #111 transparent transparent;	
+}
+.profile {
+	padding:10px;
+	border:1px solid #000;
+	border-radius:3px;
+	box-shadow:0 1px 0 #555 inset, 0 1px 7px #111;
+	background:#FF8500;
+}
+.profile:hover {
+	cursor:pointer;
+	background:-webkit-linear-gradient(#1f1f1f, #0a0a0a);
+}
+.profile .name {
+	font-size:16px;
+	color:#fff;
+	line-height:26px;
+	margin-left:10px;
+}
+.profile .name:hover {
+	color:#0088cc;
+}
+.profile img {
+	width:25px;
+	display:inline;
+	float:left;
+	border:1px solid #111;
+	border-radius:3px;
+	box-shadow:0 0 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+/* hide menu */
+.menu {
+	display:none;
+	clear:both;
+	margin:20px 0 0 0;
+}
+.menu li {
+	font-size:16px;
+	margin:0;
+  padding: 10px 4px;
+}
+.menu li a {
+	color:#555;
+}
+.menu li:hover > a{
+	color:#eee;
+}
+
+.menu li:hover{
+	border-left: 1px solid #111;
+  border-right: 1px solid #222;
+  border-bottom: 1px solid #222;
+  border-top: 1px solid #111;
+  border-radius: 3px;
+}
+
+/* hover profile show menu */
+.profile:hover .menu {
+	display:block;
+}
+
+
+.list-group p {
+    margin : 5px;
+}
+body{margin-top:20px;
+    background-color:#f2f6fc;
+    color:#69707a;
+    }
+    .list-group{
+        cursor: pointer;
+    }
+    .img-account-profile {
+        height: 10rem;
+    }
+    .rounded-circle {
+        border-radius: 50% !important;
+    }
+    .card {
+        box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+    }
+    .card .card-header {
+        font-weight: 500;
+    }
+    .card-header:first-child {
+        border-radius: 0.35rem 0.35rem 0 0;
+    }
+    .card-header {
+        padding: 1rem 1.35rem;
+        margin-bottom: 0;
+        background-color: rgba(33, 40, 50, 0.03);
+        border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+    }
+    .form-control, .dataTable-input {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1;
+        color: #69707a;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #c5ccd6;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0.35rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    
+    .nav-borders .nav-link.active {
+        color: #0061f2;
+        border-bottom-color: #0061f2;
+    }
+    .nav-borders .nav-link {
+        color: #69707a;
+        border-bottom-width: 0.125rem;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+
+    /* modification fenetre style  */
+    #id01 input[type=text]{
+        height: 41.5px;
+        width: 100%;
+        outline: none;
+        padding: 0 15px;
+        font-size: 17px;
+        font-weight: 400;
+        color: #333;
+        border: 1.5px solid #C7BEBE;
+        border-bottom-width: 2.5px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        margin-bottom: 10px ;
+        }
+        /* Set a style for all buttons */
+        .animate button {
+          color: #fff;
+          letter-spacing: 1px;
+          border: none;
+          cursor: pointer;
+          background-color: #3a0ca3;
+          height: 41.5px;
+          width: 100%;
+          outline: none;
+          padding: 0 15px;
+          font-size: 17px;
+          font-weight: 400;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+          margin: 10px 0px ;
+        }
+        
+        .animate button:hover {
+          opacity: 0.8;
+        }
+        .cancelbtn{
+          margin: auto;
+        }
+        /* Extra styles for the cancel button */
+        button.cancelbtn {
+          width: 100%;
+          padding: 10px 18px;
+          background-color: #f44336;
+        }
+        
+        /* Center the image and position the close button */
+        
+        .animate .container {
+          padding: 30px;
+        }
+        
+        span.psw {
+          float: right;
+          padding-top: 16px;
+        }
+        
+        /* The Modal (background) */
+        .modal {
+          display: block; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+          padding-top: 60px;
+        }
+        
+        /* Modal Content/Box */
+        .modal-content {
+          
+          background-color: #fefefe;
+          margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+          border: 1px solid #888;
+          width: 35%; /* Could be more or less, depending on screen size */
+        }
+        
+        /* The Close Button (x) */
+        .close {
+          position: absolute;
+          right: 25px;
+          top: 0;
+          color: #000;
+          font-size: 35px;
+          font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+          color: red;
+          cursor: pointer;
+        }
+        
+        /* Add Zoom Animation */
+        .animate {
+          -webkit-animation: animatezoom 0.6s;
+          animation: animatezoom 0.6s
+        }
+        
+        @-webkit-keyframes animatezoom {
+          from {-webkit-transform: scale(0)} 
+          to {-webkit-transform: scale(1)}
+        }
+          
+        @keyframes animatezoom {
+          from {transform: scale(0)} 
+          to {transform: scale(1)}
+        }

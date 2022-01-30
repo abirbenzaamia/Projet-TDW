@@ -6,7 +6,9 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $profilCtrl->SupprimerAnnonce($id);  
  }
-
+ if (isset($_GET['modif'])) {
+    $id = $_GET['modif'];
+ }
  
 ?>
 
@@ -95,7 +97,9 @@ include("Routes/UtilisateurRoute.php");
     
   
 </div>
-
+<?php
+$profilCtrl->displayFormModif();
+?>
 
 
 

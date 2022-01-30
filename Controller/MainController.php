@@ -3,6 +3,7 @@
 $dir = dirname(__FILE__, 2);
 require_once($dir."/Controller/AnnonceController.class.php");
 require_once($dir."/Controller/UtilisateurController.class.php");
+require_once($dir."/Controller/ProfilUtilisateurController.class.php");
 
 
 //$annonceCtrl = new AnnonceUtilisateurController();
@@ -46,6 +47,8 @@ switch ($user) {
     default:
         break;
 }
+
+
 
 
 

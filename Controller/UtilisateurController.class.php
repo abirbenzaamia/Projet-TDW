@@ -42,5 +42,10 @@ class UtilisateurController{
             echo 'success';
         }
     }
+    function getNomPrenomUtilisateur($id){
+        $UtilisateurMdl = new UtilisateurModel();
+        $res = $UtilisateurMdl->getNomPrenomUtilisateur($id);
+        return $res;
+    }
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 require_once("Model/GestionAnnoncesModel.class.php");
 require_once("View/GestionAnnoncesView.class.php");
-echo getcwd();
+
 class GestionAnnoncesController{
     function displayAnnoncesValid(){
         $annonceMdl = new GestionAnnoncesModel();
